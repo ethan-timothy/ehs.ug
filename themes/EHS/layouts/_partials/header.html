@@ -1,0 +1,29 @@
+<div class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="{{ site.Home.RelPermalink }}">
+      {{ $logo := "" }}
+      {{ with resources.Get "images/logo.jpeg" }}
+        {{ $logo = .Resize "128x png" }}
+        <img class="brand-logo" src="{{ $logo.RelPermalink }}" alt="{{ site.Title }} logo">
+      {{ end }}
+      <span class="brand-text">
+        <span class="brand-title">{{ site.Title }}</span>
+        {{ with site.Params.motto }}<span class="brand-motto">{{ . }}</span>{{ end }}
+      </span>
+    </a>
+  </div>
+</div>
+<div class="site-nav">
+  <div class="container nav-inner">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" tabindex="-1" aria-hidden="true">
+    <label for="nav-toggle" class="nav-toggle-label">
+      <span class="nav-toggle-bars">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </span>
+      <span class="nav-toggle-text">Menu</span>
+    </label>
+    {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+  </div>
+</div>

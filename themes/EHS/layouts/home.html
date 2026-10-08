@@ -1,0 +1,47 @@
+{{ define "main" }}
+<div class="container">
+  {{ $hero := "" }}
+  {{ with resources.Get "images/front.jpg" }}
+    {{ $hero = .Resize "1600x q75" }}
+  {{ end }}
+
+  <section class="hero">
+    {{ with $hero }}
+      <img class="hero-bg" src="{{ .RelPermalink }}" alt="" loading="eager" decoding="async">
+    {{ end }}
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-kicker">Welcome to</p>
+      <h1 class="hero-title">{{ site.Title }}</h1>
+      {{ with site.Params.motto }}<p class="hero-motto">{{ . }}</p>{{ end }}
+      <p class="hero-lead">A mixed day and boarding school in Namayumba town council, Wakiso district, Uganda.</p>
+      <div class="hero-actions">
+        <a class="btn btn-light" href="{{ "contacts/" | relURL }}">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="facts" aria-label="School at a glance">
+    <div class="fact">
+      <span class="fact-value">2010</span>
+      <span class="fact-label">Founded</span>
+    </div>
+    <div class="fact">
+      <span class="fact-value">250</span>
+      <span class="fact-label">Students</span>
+    </div>
+    <div class="fact">
+      <span class="fact-value">14</span>
+      <span class="fact-label">Teachers</span>
+    </div>
+    <div class="fact">
+      <span class="fact-value">Day &amp; Boarding</span>
+      <span class="fact-label">Namayumba, Wakiso</span>
+    </div>
+  </section>
+
+  <article class="page home">
+    {{ .Content }}
+  </article>
+</div>
+{{ end }}

@@ -1,0 +1,8 @@
+{{- $q := or (.Get "q") "Namayumba, Wakiso, Uganda" }}
+<iframe
+  class="map-embed"
+  src="https://maps.google.com/maps?q={{ $q | urlquery }}&z=13&output=embed"
+  title="Map: {{ $q }}"
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+  allowfullscreen></iframe>

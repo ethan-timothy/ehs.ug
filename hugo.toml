@@ -1,0 +1,44 @@
+baseURL = 'https://ehs.ug/'
+locale = 'en-us'
+title = 'Extreme High School (EHS)'
+theme = 'EHS'
+enableRobotsTXT = true
+disableKinds = ['taxonomy', 'term']
+
+[params]
+  motto = 'Prepared to Excel'
+  description = 'Extreme High School - a mixed day and boarding school in Namayumba, Wakiso district, Uganda.'
+
+  [params.robots]
+    disallow = []
+
+[menus]
+  [[menus.main]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 10
+
+  [[menus.main]]
+    name = 'About'
+    pageRef = '/about'
+    weight = 20
+
+  [[menus.main]]
+    name = 'Admissions'
+    pageRef = '/admissions'
+    weight = 30
+
+  [[menus.main]]
+    name = 'Support'
+    pageRef = '/support'
+    weight = 40
+
+  [[menus.main]]
+    name = 'News'
+    pageRef = '/news'
+    weight = 50
+
+  [[menus.main]]
+    name = 'Contact'
+    pageRef = '/contacts'
+    weight = 60

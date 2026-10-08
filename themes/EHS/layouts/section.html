@@ -1,0 +1,30 @@
+{{ define "main" }}
+  <div class="container">
+    <article class="page">
+      <h1 class="page-title">{{ .Title }}</h1>
+      {{ .Content }}
+      {{ if eq .Section "news" }}
+        {{ range .Pages.ByDate.Reverse }}
+          <article class="post-item">
+            <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+            <time datetime="{{ .Date | time.Format "2006-01-02" }}">{{ .Date | time.Format ":date_long" }}</time>
+            {{ with .Description }}<p>{{ . }}</p>{{ end }}
+          </article>
+        {{ else }}
+          <p>No news yet. Please check back soon.</p>
+        {{ end }}
+      {{ else }}
+        {{ with .Pages }}
+          <div class="child-list">
+            {{ range . }}
+              <a class="child-card" href="{{ .RelPermalink }}">
+                <h2>{{ .LinkTitle }}</h2>
+                {{ with .Description }}<p>{{ . }}</p>{{ end }}
+              </a>
+            {{ end }}
+          </div>
+        {{ end }}
+      {{ end }}
+    </article>
+  </div>
+{{ end }}

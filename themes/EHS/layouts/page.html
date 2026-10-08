@@ -1,0 +1,16 @@
+{{ define "main" }}
+  <div class="container">
+    <article class="page">
+      {{ if and .Parent (not .Parent.IsHome) }}
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a> &rsaquo; {{ .Title }}
+        </nav>
+      {{ end }}
+      <h1 class="page-title">{{ .Title }}</h1>
+      {{ if eq .Section "news" }}
+        <time class="post-date" datetime="{{ .Date | time.Format "2006-01-02" }}">{{ .Date | time.Format ":date_long" }}</time>
+      {{ end }}
+      {{ .Content }}
+    </article>
+  </div>
+{{ end }}

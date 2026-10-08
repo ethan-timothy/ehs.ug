@@ -1,0 +1,21 @@
+<div class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <p class="footer-title">{{ site.Title }}</p>
+      {{ with site.Params.motto }}<p class="footer-motto">{{ . }}</p>{{ end }}
+    </div>
+    <div class="footer-col">
+      <p class="footer-title">Contact</p>
+      <p>PO BOX 25359, Kampala<br>Wakiso district, Namayumba town</p>
+      <p>Tel: +256 77 2615755 or +256 751 615755<br>
+      Email: extremecollegeschool@gmail.com</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-title">Location</p>
+      <p>Namayumba town council, Wakiso district<br>Hoima road, Uganda</p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>Copyright &copy; {{ now.Year }} {{ site.Title }}. All rights reserved.</p>
+  </div>
+</div>

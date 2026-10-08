@@ -1,0 +1,8 @@
+User-agent: *
+{{- with site.Params.robots }}
+  {{- range .disallow }}
+Disallow: {{ . }}
+  {{- end }}
+{{- end }}
+
+Sitemap: {{ "sitemap.xml" | absURL }}

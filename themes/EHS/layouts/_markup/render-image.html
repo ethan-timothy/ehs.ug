@@ -1,0 +1,20 @@
+{{- /* Image render hook: serve content images through the Hugo asset pipeline. */}}
+{{- $path := strings.TrimPrefix "/" .Destination }}
+{{- $img := resources.Get $path }}
+{{- if and $img (reflect.IsImageResource $img) }}
+  {{- $res := $img }}
+  {{- if gt $img.Width 900 }}
+    {{- $res = $img.Resize "900x q80" }}
+  {{- end }}
+  <img
+    src="{{ $res.RelPermalink }}"
+    alt="{{ .PlainText }}"
+    {{- with .Title }} title="{{ . }}"{{- end }}
+    loading="lazy"
+    decoding="async"
+    width="{{ $res.Width }}"
+    height="{{ $res.Height }}">
+{{- else }}
+  {{- warnf "Image not found in assets/: %s" .Destination }}
+  <img src="{{ .Destination }}" alt="{{ .PlainText }}">
+{{- end }}

@@ -1,0 +1,12 @@
+public/
+resources/
+.hugo_build.lock
+
+# Windows temp files
+Thumbs.db
+Thumbs.db:encryptable
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+*.tmp
+~$*

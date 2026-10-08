@@ -1,0 +1,73 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+
+{{- $desc := or .Description site.Params.description }}
+{{- with $desc }}
+  <meta name="description" content="{{ . }}">
+{{- end }}
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{- /* Open Graph */}}
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+{{- with $desc }}
+  <meta property="og:description" content="{{ . }}">
+{{- end }}
+{{- with site.Params.ogImage | default "images/front.jpg" }}
+  {{- with resources.Get . }}
+    {{- $og := .Resize "1200x630 smart" }}
+  <meta property="og:image" content="{{ $og.Permalink }}">
+  <meta property="og:image:width" content="{{ $og.Width }}">
+  <meta property="og:image:height" content="{{ $og.Height }}">
+  {{- end }}
+{{- end }}
+
+{{- /* Twitter card */}}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
+{{- with $desc }}
+  <meta name="twitter:description" content="{{ . }}">
+{{- end }}
+{{- with site.Params.ogImage | default "images/front.jpg" }}
+  {{- with resources.Get . }}
+    {{- $og := .Resize "1200x630 smart" }}
+  <meta name="twitter:image" content="{{ $og.Permalink }}">
+  {{- end }}
+{{- end }}
+
+{{- /* Favicon via Hugo Pipes */}}
+{{- with resources.Get "images/logo.jpeg" }}
+  {{- $favicon := .Resize "48x48 smart png" }}
+  <link rel="icon" type="image/png" href="{{ $favicon.RelPermalink }}">
+{{- end }}
+
+{{- /* Structured data */}}
+{{- with resources.Get "images/logo.jpeg" }}
+  {{- $logo := .Resize "120x png" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "School",
+  "name": {{ site.Title | jsonify | safeJS }},
+  {{ with site.Params.motto }}"slogan": {{ . | jsonify | safeJS }},{{ end }}
+  "url": {{ site.BaseURL | jsonify | safeJS }},
+  "logo": {{ $logo.Permalink | jsonify | safeJS }},
+  "telephone": "+256 77 2615755",
+  "email": "extremecollegeschool@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Namayumba town council",
+    "addressLocality": "Wakiso district",
+    "addressCountry": "UG",
+    "postalOfficeBox": "PO BOX 25359",
+    "addressRegion": "Kampala"
+  }
+}
+</script>
+  {{- end }}
+
+{{ partialCached "head/css.html" . }}
+{{ partialCached "head/js.html" . }}
