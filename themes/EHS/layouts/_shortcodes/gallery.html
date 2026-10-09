@@ -1,0 +1,10 @@
+<div class="gallery-grid">
+  {{ range .Page.Resources.ByType "image" }}
+    {{ $thumb := .Fill "300x300 q85" }}
+    <figure>
+      
+        <img src="{{ $thumb.RelPermalink }}" alt="{{ .Name }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}">
+      
+    </figure>
+  {{ end }}
+</div>

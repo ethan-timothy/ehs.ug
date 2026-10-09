@@ -2,7 +2,7 @@ baseURL = 'https://ehs.ug/'
 locale = 'en-us'
 title = 'Extreme High School (EHS)'
 theme = 'EHS'
-enableRobotsTXT = true
+enableRobotsTXT = false
 disableKinds = ['taxonomy', 'term']
 
 [params]
@@ -29,16 +29,26 @@ disableKinds = ['taxonomy', 'term']
     weight = 30
 
   [[menus.main]]
+    name = 'Projects'
+    pageRef = '/projects'
+    weight = 40
+
+  [[menus.main]]
+    name = 'Gallery'
+    pageRef = '/gallery'
+    weight = 50
+
+  [[menus.main]]
     name = 'Support'
     pageRef = '/support'
-    weight = 40
+    weight = 60
 
   [[menus.main]]
     name = 'News'
     pageRef = '/news'
-    weight = 50
+    weight = 70
 
   [[menus.main]]
     name = 'Contact'
     pageRef = '/contacts'
-    weight = 60
+    weight = 80

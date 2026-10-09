@@ -269,6 +269,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .page img {
   max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 8px;
   margin: 0.5rem 0;
@@ -398,4 +399,22 @@ h1, h2, h3, h4, h5, h6 {
 
 .breadcrumb a {
   color: var(--orange-700);
+}
+
+/* Gallery Section */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.gallery-grid figure {
+  margin: 0;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
 }
